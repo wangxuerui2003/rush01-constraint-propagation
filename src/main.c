@@ -6,7 +6,7 @@
 /*   By: wxuerui <wangxuerui2003@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:50:23 by wxuerui           #+#    #+#             */
-/*   Updated: 2023/08/13 22:34:08 by wxuerui          ###   ########.fr       */
+/*   Updated: 2023/08/13 22:55:43 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 // Helper functions to implement
 
-// parse input from ac and av
-// allocate 2d array
-// free 2d array
-// copy 2d array
 // check if a row is valid
 // check if a column is valid
 // check win
 // eliminates the impossible available numbers on the board
 // fill in the "must be" numbers on the board
-// printing board
 
-// helper helper functions
-// free a tile
-// ft_atoi
-
+void	free_game(struct skyscraper *game)
+{
+	free_board(game->board, game->board_size);
+	free(game->clues.up);
+	free(game->clues.bot);
+	free(game->clues.left);
+	free(game->clues.right);
+}
 
 int main(int ac, char **av)
 {
 	struct skyscraper	game;
 
 	if (ac != 2) {
-		ft_putstr("Usage: ./rush01 \"col1up col2up col3up col4up col1down col2down col3down col4down row1left row2left row3left row4left row1right row2right row3right row4right\"\n");
+		ft_putstr("Usage: ./rush01 \"<clues>\"\n");
 		return 1;
 	}
 
@@ -54,6 +53,8 @@ int main(int ac, char **av)
 	// Print out the board
 	print_board(&game);
 
-	system("leaks -q rush01");
+	// Free memory
+	free_game(&game);
+
 	return (0);
 }
