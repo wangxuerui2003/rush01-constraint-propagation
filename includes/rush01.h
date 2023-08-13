@@ -6,7 +6,7 @@
 /*   By: wxuerui <wangxuerui2003@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 20:03:38 by wxuerui           #+#    #+#             */
-/*   Updated: 2023/08/13 20:09:12 by wxuerui          ###   ########.fr       */
+/*   Updated: 2023/08/13 22:20:42 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,19 @@ struct tile {
 
 struct skyscraper {
 	struct clues	clues;
-	struct tile		*board;
+	struct tile		**board;
 	int				board_size;
 };
+
+void	ft_putstr(char *str);
+int	ft_atoi(char *a);
+int	ft_isspace(char c);
+int	ft_strlen(char *str);
+void	ft_putchar(char c);
+struct tile	**malloc_board(int board_size);
+void	init_board_state(struct tile **board, int board_size);
+void	init_tile(struct tile *tile, int board_size);
+int	init_game(struct skyscraper *game, char *arg);
+void	print_board(struct skyscraper *game);
 
 #endif
