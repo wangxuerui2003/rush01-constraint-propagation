@@ -6,7 +6,7 @@
 /*   By: wxuerui <wangxuerui2003@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 21:28:50 by wxuerui           #+#    #+#             */
-/*   Updated: 2023/08/13 22:32:38 by wxuerui          ###   ########.fr       */
+/*   Updated: 2023/08/14 09:39:19 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int	check_valid_clues(struct clues *clues, int board_size)
 	return (1);
 }
 
-struct tile	**init_board(int board_size)
+struct cell	**init_board(int board_size)
 {
-	struct tile	**board;
+	struct cell	**board;
 
 	board = malloc_board(board_size);
 	init_board_state(board, board_size);

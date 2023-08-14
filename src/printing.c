@@ -6,13 +6,13 @@
 /*   By: wxuerui <wangxuerui2003@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:29:10 by wxuerui           #+#    #+#             */
-/*   Updated: 2023/08/13 22:31:49 by wxuerui          ###   ########.fr       */
+/*   Updated: 2023/08/14 09:39:19 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush01.h"
 
-void	print_row(struct tile *row, int board_size)
+void	print_row(struct cell *row, int board_size)
 {
 	int	i;
 

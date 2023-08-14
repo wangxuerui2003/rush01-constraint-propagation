@@ -6,7 +6,7 @@
 /*   By: wxuerui <wangxuerui2003@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 20:03:38 by wxuerui           #+#    #+#             */
-/*   Updated: 2023/08/13 22:52:49 by wxuerui          ###   ########.fr       */
+/*   Updated: 2023/08/14 12:27:15 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,19 @@ struct clues {
 	int	*right;
 };
 
-struct tile {
+struct cell {
 	int num;
 	int	*available_nums;
 };
 
+typedef struct vector {
+	int	row;
+	int	col;
+}	t_vector;
+
 struct skyscraper {
 	struct clues	clues;
-	struct tile		**board;
+	struct cell		**board;
 	int				board_size;
 };
 
@@ -40,14 +45,21 @@ int	ft_atoi(char *a);
 int	ft_isspace(char c);
 int	ft_strlen(char *str);
 void	ft_putchar(char c);
-struct tile	**malloc_board(int board_size);
-void	init_board_state(struct tile **board, int board_size);
-void	init_tile(struct tile *tile, int board_size);
+struct cell	**malloc_board(int board_size);
+void	init_board_state(struct cell **board, int board_size);
+void	init_cell(struct cell *cell, int board_size);
 int	init_game(struct skyscraper *game, char *arg);
 void	print_board(struct skyscraper *game);
 void	free_game(struct skyscraper *game);
-void	free_board(struct tile **board, int board_size);
-void	copy_tile(struct tile *dest, struct tile *src, int board_size);
-struct tile	**copy_board(struct tile **src, int board_size);
+void	free_board(struct cell **board, int board_size);
+void	copy_cell(struct cell *dest, struct cell *src, int board_size, int need_malloc);
+void	copy_board(struct cell **dest, struct cell **src, int board_size, int need_malloc);
+int	update_cell(struct skyscraper *game, t_vector pos);
+int	modify_cell(struct skyscraper *game, t_vector pos, int num, int do_update);
+int	check_board(struct skyscraper *game);
+int	check_row(struct skyscraper *game, int row);
+int	check_col(struct skyscraper *game, int col);
+int	backtracking(struct skyscraper *game, t_vector pos);
+void	basic_constraints(struct skyscraper *game);
 
 #endif

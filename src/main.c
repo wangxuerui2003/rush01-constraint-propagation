@@ -6,7 +6,7 @@
 /*   By: wxuerui <wangxuerui2003@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:50:23 by wxuerui           #+#    #+#             */
-/*   Updated: 2023/08/13 22:55:43 by wxuerui          ###   ########.fr       */
+/*   Updated: 2023/08/14 12:27:32 by wxuerui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,15 @@ int main(int ac, char **av)
 	}
 
 	// TODO: Do the first round of constraints
+	basic_constraints(&game);
+	print_board(&game);
 
 	// TODO: Start backtracking the answer, every recursion saves the current state of the board for future use if there is a contradiction
-
+	if (backtracking(&game, (t_vector){0, 0}) == 0)
+	{
+		ft_putstr("Error\n");
+		return 3;
+	}
 	// Print out the board
 	print_board(&game);
 
